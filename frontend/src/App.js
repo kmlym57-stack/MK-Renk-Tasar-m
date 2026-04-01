@@ -39,8 +39,9 @@ import {
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
-const PHONE_NUMBER = "05455653257";
-const WHATSAPP_LINK = `https://wa.me/90${PHONE_NUMBER.replace(/^0/, "")}`;
+const PHONE_NUMBER = "05325782937";
+const WHATSAPP_MESSAGE = encodeURIComponent("Merhaba, hizmetleriniz konusunda bilgi alabilir miyim?");
+const WHATSAPP_LINK = `https://wa.me/90${PHONE_NUMBER.replace(/^0/, "")}?text=${WHATSAPP_MESSAGE}`;
 const BUSINESS_NAME = "MK Renk & Tasarım";
 const EMAIL = "mlymmyasar@gmail.com";
 
@@ -61,13 +62,6 @@ const services = [
   },
   {
     id: 3,
-    title: "Tadilat",
-    description: "Küçük veya büyük ölçekli tadilat projeleriniz için yanınızdayız. Evinizi hayallerinize uygun şekilde yeniliyoruz.",
-    icon: Hammer,
-    features: ["Komple tadilat", "Kısmi yenileme", "Proje yönetimi"],
-  },
-  {
-    id: 4,
     title: "Tamirat",
     description: "Çatlak onarımı, alçı tamiri, su kaçağı sonrası tamirat ve daha fazlası. Hızlı ve kalıcı çözümler sunuyoruz.",
     icon: Wrench,
@@ -116,7 +110,7 @@ const galleryImages = [
 
 const stats = [
   { number: "500+", label: "Mutlu Müşteri", icon: Star },
-  { number: "10+", label: "Yıl Deneyim", icon: Clock },
+  { number: "20+", label: "Yıl Deneyim", icon: Clock },
   { number: "100%", label: "Müşteri Memnuniyeti", icon: Shield },
   { number: "250+", label: "Tamamlanan Proje", icon: Award },
 ];
@@ -211,7 +205,6 @@ const Header = () => {
 
   const navLinks = [
     { href: "#hizmetler", label: "Hizmetler" },
-    { href: "#fiyat-hesapla", label: "Fiyat Hesapla" },
     { href: "#galeri", label: "Galeri" },
     { href: "#hakkimizda", label: "Hakkımızda" },
     { href: "#yorumlar", label: "Yorumlar" },
@@ -383,7 +376,7 @@ const HeroSection = () => {
         </h1>
         
         <p className="text-lg sm:text-xl text-white/80 max-w-2xl mx-auto mb-10 leading-relaxed">
-          10 yılı aşkın deneyimimizle boya, badana ve tadilat hizmetlerinde 
+          20 yılı aşkın deneyimimizle boya, badana ve tamirat hizmetlerinde 
           kaliteli işçilik ve uygun fiyat garantisi sunuyoruz.
         </p>
         
@@ -581,7 +574,7 @@ const AboutSection = () => {
   const [ref, isInView] = useInView();
 
   const features = [
-    { icon: Clock, text: "10+ yıl sektör deneyimi" },
+    { icon: Clock, text: "20+ yıl sektör deneyimi" },
     { icon: Shield, text: "Garanti ve güvence" },
     { icon: Star, text: "Kaliteli malzeme kullanımı" },
     { icon: CheckCircle, text: "Zamanında teslim" },
@@ -658,7 +651,7 @@ const AboutSection = () => {
                     <Award className="w-8 h-8 text-white" />
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-[#1C1C18]">10+</div>
+                    <div className="text-3xl font-bold text-[#1C1C18]">20+</div>
                     <div className="text-[#63635E]">Yıllık Deneyim</div>
                   </div>
                 </div>
@@ -975,7 +968,6 @@ const ReviewsSection = () => {
                     <SelectContent>
                       <SelectItem value="İç Mekan Boya">İç Mekan Boya</SelectItem>
                       <SelectItem value="Badana">Badana</SelectItem>
-                      <SelectItem value="Tadilat">Tadilat</SelectItem>
                       <SelectItem value="Tamirat">Tamirat</SelectItem>
                     </SelectContent>
                   </Select>
@@ -1189,7 +1181,6 @@ const QuoteFormSection = () => {
                       <SelectContent>
                         <SelectItem value="ic-mekan-boya">İç Mekan Boya</SelectItem>
                         <SelectItem value="badana">Badana</SelectItem>
-                        <SelectItem value="tadilat">Tadilat</SelectItem>
                         <SelectItem value="tamirat">Tamirat</SelectItem>
                         <SelectItem value="diger">Diğer</SelectItem>
                       </SelectContent>
@@ -1345,7 +1336,7 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-white/60 leading-relaxed max-w-md mb-6">
-              10 yılı aşkın deneyimimizle boya, badana ve tadilat hizmetlerinde 
+              20 yılı aşkın deneyimimizle boya, badana ve tamirat hizmetlerinde 
               kaliteli işçilik ve müşteri memnuniyeti garantisi sunuyoruz.
             </p>
             <div className="flex gap-4">
@@ -1375,7 +1366,7 @@ const Footer = () => {
           <div>
             <h4 className="text-white font-semibold mb-6">Hizmetler</h4>
             <ul className="space-y-3">
-              {['İç Mekan Boya', 'Badana', 'Tadilat', 'Tamirat'].map((service) => (
+              {['İç Mekan Boya', 'Badana', 'Tamirat'].map((service) => (
                 <li key={service}>
                   <a href="#hizmetler" className="text-white/60 hover:text-[#DE6B48] transition-colors">
                     {service}
@@ -1455,7 +1446,6 @@ const HomePage = () => {
         <HeroSection />
         <StatsSection />
         <ServicesSection />
-        <PriceCalculatorSection />
         <GallerySection />
         <AboutSection />
         <ReviewsSection />
