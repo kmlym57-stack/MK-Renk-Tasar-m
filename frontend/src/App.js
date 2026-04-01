@@ -92,8 +92,8 @@ const galleryImages = [
   },
   {
     id: 4,
-    url: "https://images.pexels.com/photos/36153946/pexels-photo-36153946.jpeg",
-    title: "Profesyonel Ekip",
+    url: "https://images.unsplash.com/photo-1693985120993-e9b203ce7631?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Njl8MHwxfHNlYXJjaHwxfHxwYWludGVyJTIwcGFpbnRpbmclMjB3YWxsJTIwcm9sbGVyJTIwd2hpdGUlMjBpbnRlcmlvciUyMHJlbm92YXRpb258ZW58MHx8fHwxNzc1MDczNzIxfDA&ixlib=rb-4.1.0&q=85",
+    title: "Duvar Boyama",
     category: "Çalışma",
   },
   {
@@ -114,7 +114,7 @@ const stats = [
   { number: "500+", label: "Mutlu Müşteri", icon: Star },
   { number: "10+", label: "Yıl Deneyim", icon: Clock },
   { number: "100%", label: "Müşteri Memnuniyeti", icon: Shield },
-  { number: "50+", label: "Tamamlanan Proje", icon: Award },
+  { number: "250+", label: "Tamamlanan Proje", icon: Award },
 ];
 
 const testimonials = [
@@ -125,9 +125,9 @@ const testimonials = [
     rating: 5,
   },
   {
-    name: "Fatma Kaya",
-    role: "İş Yeri Sahibi",
-    text: "Ofisimizin tadilatını MK Renk & Tasarım'a yaptırdık. Profesyonel yaklaşımları ve kaliteli işçilikleri için teşekkürler.",
+    name: "Adnan Demirtaş",
+    role: "Ev Sahibi",
+    text: "Evimizin tadilatını MK Renk & Tasarım'a yaptırdık. Profesyonel yaklaşımları ve kaliteli işçilikleri için teşekkürler.",
     rating: 5,
   },
   {
@@ -359,8 +359,8 @@ const HeroSection = () => {
     <section data-testid="hero-section" className="hero-section" ref={ref}>
       <div className="hero-bg-wrapper">
         <img
-          src="https://images.pexels.com/photos/36153946/pexels-photo-36153946.jpeg"
-          alt="MK Renk & Tasarım - Profesyonel Boya Ekibi"
+          src="https://images.unsplash.com/photo-1745665777586-09381ba528d6?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Njl8MHwxfHNlYXJjaHwyfHxwYWludGVyJTIwcGFpbnRpbmclMjB3YWxsJTIwcm9sbGVyJTIwd2hpdGUlMjBpbnRlcmlvciUyMHJlbm92YXRpb258ZW58MHx8fHwxNzc1MDczNzIxfDA&ixlib=rb-4.1.0&q=85"
+          alt="MK Renk & Tasarım - Profesyonel Boya Hizmeti"
           className="hero-bg"
         />
         <div className="hero-gradient" />
