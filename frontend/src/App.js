@@ -1115,7 +1115,7 @@ const Footer = () => {
 
         <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-white/40 text-sm">
-            © 2024 {BUSINESS_NAME}. Tüm hakları saklıdır.
+            © 2026 {BUSINESS_NAME}. Tüm hakları saklıdır.
           </p>
           <a 
             href="#teklif"
