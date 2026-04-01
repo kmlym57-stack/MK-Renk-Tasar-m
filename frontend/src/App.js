@@ -276,7 +276,7 @@ const Header = () => {
                 asChild
                 className="bg-[#DE6B48] hover:bg-[#c55a3a] text-white rounded-full px-6 shadow-lg shadow-[#DE6B48]/30 hover:shadow-[#DE6B48]/50 transition-all duration-300 hover:-translate-y-0.5"
               >
-                <a href="#teklif">Ücretsiz Teklif</a>
+                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">Ücretsiz Teklif</a>
               </Button>
             </div>
 
@@ -387,7 +387,7 @@ const HeroSection = () => {
             size="lg"
             className="bg-[#DE6B48] hover:bg-[#c55a3a] text-white rounded-full px-8 py-6 text-base shadow-2xl shadow-[#DE6B48]/30 hover:shadow-[#DE6B48]/50 transition-all duration-300 hover:-translate-y-1"
           >
-            <a href="#teklif">
+            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
               Ücretsiz Teklif Al
               <ArrowRight className="ml-2 w-5 h-5" />
             </a>
@@ -1400,7 +1400,9 @@ const Footer = () => {
             © 2026 {BUSINESS_NAME}. Tüm hakları saklıdır.
           </p>
           <a 
-            href="#teklif"
+            href={WHATSAPP_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-[#DE6B48] text-sm font-medium hover:underline"
           >
             Ücretsiz Teklif Al →
