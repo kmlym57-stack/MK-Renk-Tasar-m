@@ -35,6 +35,7 @@ const API = `${BACKEND_URL}/api`;
 
 const PHONE_NUMBER = "05455653257";
 const WHATSAPP_LINK = `https://wa.me/90${PHONE_NUMBER.replace(/^0/, "")}`;
+const BUSINESS_NAME = "MK Renk & Tasarım";
 
 const services = [
   {
@@ -42,50 +43,50 @@ const services = [
     title: "İç Mekan Boya",
     description: "Evinizin her köşesine profesyonel boya uygulaması. Kaliteli malzeme ve uzman ekibimizle duvarlarınıza yeni bir hayat veriyoruz.",
     icon: Paintbrush,
-    image: "https://images.pexels.com/photos/5493669/pexels-photo-5493669.jpeg",
+    image: "https://images.pexels.com/photos/5691610/pexels-photo-5691610.jpeg",
   },
   {
     id: 2,
     title: "Badana",
     description: "Temiz, hijyenik ve pürüzsüz badana uygulamaları. Duvarlarınız bembeyaz ve tertemiz görünsün.",
     icon: Home,
-    image: "https://images.pexels.com/photos/6474339/pexels-photo-6474339.jpeg",
+    image: "https://images.unsplash.com/photo-1693985120993-e9b203ce7631?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MTJ8MHwxfHNlYXJjaHwzfHx3YWxsJTIwcGFpbnRpbmclMjBpbnRlcmlvciUyMGhvbWUlMjByZW5vdmF0aW9uJTIwYnJ1c2glMjByb2xsZXJ8ZW58MHx8fHwxNzc1MDcyOTc5fDA&ixlib=rb-4.1.0&q=85",
   },
   {
     id: 3,
     title: "Tadilat",
     description: "Küçük veya büyük ölçekli tadilat projeleriniz için yanınızdayız. Evinizi hayallerinize uygun şekilde yeniliyoruz.",
     icon: Hammer,
-    image: "https://images.pexels.com/photos/15798784/pexels-photo-15798784.jpeg",
+    image: "https://images.unsplash.com/photo-1674649207083-281c2517ab49?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODF8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBwYWludGVyJTIwcGFpbnRpbmclMjB3YWxsJTIwaW50ZXJpb3IlMjBob3VzZXxlbnwwfHx8fDE3NzUwNzI5ODR8MA&ixlib=rb-4.1.0&q=85",
   },
   {
     id: 4,
     title: "Tamirat",
     description: "Çatlak onarımı, alçı tamiri, su kaçağı sonrası tamirat ve daha fazlası. Hızlı ve kalıcı çözümler sunuyoruz.",
     icon: Wrench,
-    image: "https://images.pexels.com/photos/7587872/pexels-photo-7587872.jpeg",
+    image: "https://images.pexels.com/photos/6474346/pexels-photo-6474346.jpeg",
   },
 ];
 
 const galleryImages = [
   {
     id: 1,
-    url: "https://images.pexels.com/photos/7587872/pexels-photo-7587872.jpeg",
-    title: "Modern Salon",
+    url: "https://images.pexels.com/photos/5691610/pexels-photo-5691610.jpeg",
+    title: "Tavan Boyama",
   },
   {
     id: 2,
-    url: "https://images.unsplash.com/photo-1749704647804-81338ade5546?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1OTN8MHwxfHNlYXJjaHwzfHxob21lJTIwcmVub3ZhdGlvbiUyMGxpdmluZyUyMHJvb218ZW58MHx8fHwxNzc1MDcxMzA5fDA&ixlib=rb-4.1.0&q=85",
-    title: "Mutfak Yenileme",
+    url: "https://images.unsplash.com/photo-1693985120993-e9b203ce7631?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MTJ8MHwxfHNlYXJjaHwzfHx3YWxsJTIwcGFpbnRpbmclMjBpbnRlcmlvciUyMGhvbWUlMjByZW5vdmF0aW9uJTIwYnJ1c2glMjByb2xsZXJ8ZW58MHx8fHwxNzc1MDcyOTc5fDA&ixlib=rb-4.1.0&q=85",
+    title: "Duvar Boyama",
   },
   {
     id: 3,
-    url: "https://images.pexels.com/photos/5493669/pexels-photo-5493669.jpeg",
+    url: "https://images.pexels.com/photos/6474346/pexels-photo-6474346.jpeg",
     title: "Profesyonel Boya",
   },
   {
     id: 4,
-    url: "https://images.pexels.com/photos/6474339/pexels-photo-6474339.jpeg",
+    url: "https://images.unsplash.com/photo-1595814432848-830b880ecf0e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MTJ8MHwxfHNlYXJjaHwxfHx3YWxsJTIwcGFpbnRpbmclMjBpbnRlcmlvciUyMGhvbWUlMjByZW5vdmF0aW9uJTIwYnJ1c2glMjByb2xsZXJ8ZW58MHx8fHwxNzc1MDcyOTc5fDA&ixlib=rb-4.1.0&q=85",
     title: "Detaylı İşçilik",
   },
 ];
@@ -128,11 +129,11 @@ const Header = () => {
                 <Paintbrush className="w-5 h-5 text-white" />
               </div>
               <span
-                className={`text-2xl font-bold tracking-tight ${
+                className={`text-xl font-bold tracking-tight ${
                   isScrolled ? "text-[#1C1C18]" : "text-white"
                 }`}
               >
-                Dekorix
+                {BUSINESS_NAME}
               </span>
             </a>
 
@@ -189,7 +190,7 @@ const Header = () => {
         className={`mobile-menu ${isMobileMenuOpen ? "open" : ""}`}
       >
         <div className="flex justify-between items-center mb-8">
-          <span className="text-xl font-bold text-[#1C1C18]">Dekorix</span>
+          <span className="text-lg font-bold text-[#1C1C18]">{BUSINESS_NAME}</span>
           <button
             data-testid="close-mobile-menu-btn"
             onClick={() => setIsMobileMenuOpen(false)}
@@ -227,8 +228,8 @@ const HeroSection = () => {
   return (
     <section data-testid="hero-section" className="hero-section">
       <img
-        src="https://images.pexels.com/photos/15798784/pexels-photo-15798784.jpeg"
-        alt="Dekorix Boya ve Tadilat"
+        src="https://images.pexels.com/photos/5691610/pexels-photo-5691610.jpeg"
+        alt="MK Renk & Tasarım - Boya ve Tadilat"
         className="hero-bg"
       />
       <div className="hero-overlay" />
@@ -392,10 +393,10 @@ const AboutSection = () => {
           <div>
             <p className="accent-text text-[#DE6B48] mb-4">HAKKIMIZDA</p>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl text-white mb-6">
-              Neden Dekorix?
+              Neden MK Renk & Tasarım?
             </h2>
             <p className="text-white/80 leading-relaxed mb-8">
-              Dekorix olarak, yılların getirdiği tecrübe ve profesyonel
+              MK Renk & Tasarım olarak, yılların getirdiği tecrübe ve profesyonel
               yaklaşımımızla evinizi en iyi şekilde yeniliyoruz. Müşteri
               memnuniyetini ön planda tutarak, kaliteli malzemeler ve uzman
               ekibimizle hizmet veriyoruz.
@@ -417,8 +418,8 @@ const AboutSection = () => {
           <div className="relative">
             <div className="aspect-[4/3] rounded-2xl overflow-hidden">
               <img
-                src="https://images.pexels.com/photos/6474339/pexels-photo-6474339.jpeg"
-                alt="Dekorix Ekibi"
+                src="https://images.pexels.com/photos/6474346/pexels-photo-6474346.jpeg"
+                alt="MK Renk & Tasarım Ekibi"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -537,7 +538,7 @@ const QuoteFormSection = () => {
           </div>
 
           <div className="quote-form">
-            <form onSubmit={handleSubmit} className="space-y-5">
+            <form onSubmit={handleSubmit} data-testid="quote-form" className="space-y-5">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="name" className="text-[#1C1C18]">
@@ -732,7 +733,7 @@ const Footer = () => {
             <div className="w-10 h-10 bg-[#2B4433] rounded-lg flex items-center justify-center">
               <Paintbrush className="w-5 h-5 text-white" />
             </div>
-            <span className="text-xl font-bold text-white">Dekorix</span>
+            <span className="text-xl font-bold text-white">{BUSINESS_NAME}</span>
           </div>
 
           <div className="flex items-center gap-6">
@@ -763,7 +764,7 @@ const Footer = () => {
           </div>
 
           <p className="text-white/50 text-sm">
-            © 2024 Dekorix. Tüm hakları saklıdır.
+            © 2024 MK Renk & Tasarım. Tüm hakları saklıdır.
           </p>
         </div>
       </div>
