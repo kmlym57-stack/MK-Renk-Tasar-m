@@ -31,6 +31,7 @@ import {
   Clock,
   Shield,
   Award,
+  Mail,
 } from "lucide-react";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
@@ -39,6 +40,7 @@ const API = `${BACKEND_URL}/api`;
 const PHONE_NUMBER = "05455653257";
 const WHATSAPP_LINK = `https://wa.me/90${PHONE_NUMBER.replace(/^0/, "")}`;
 const BUSINESS_NAME = "MK Renk & Tasarım";
+const EMAIL = "mlymmyasar@gmail.com";
 
 const services = [
   {
@@ -977,17 +979,17 @@ const ContactSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <a
             href={`tel:${PHONE_NUMBER}`}
             data-testid="contact-phone"
-            className={`group bg-[#F7F7F2] rounded-2xl p-8 text-center hover:bg-[#2B4433] transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl ${isInView ? 'animate-fade-up' : 'opacity-0'}`}
+            className={`group bg-[#F7F7F2] rounded-2xl p-6 text-center hover:bg-[#2B4433] transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl ${isInView ? 'animate-fade-up' : 'opacity-0'}`}
           >
-            <div className="w-20 h-20 bg-[#2B4433] group-hover:bg-white rounded-2xl flex items-center justify-center mx-auto mb-6 transition-colors duration-500">
-              <Phone className="w-8 h-8 text-white group-hover:text-[#2B4433] transition-colors" />
+            <div className="w-16 h-16 bg-[#2B4433] group-hover:bg-white rounded-2xl flex items-center justify-center mx-auto mb-4 transition-colors duration-500">
+              <Phone className="w-7 h-7 text-white group-hover:text-[#2B4433] transition-colors" />
             </div>
-            <h3 className="text-xl font-bold text-[#1C1C18] group-hover:text-white mb-2 transition-colors">Telefon</h3>
-            <p className="text-[#DE6B48] font-semibold text-lg">{PHONE_NUMBER}</p>
+            <h3 className="text-lg font-bold text-[#1C1C18] group-hover:text-white mb-2 transition-colors">Telefon</h3>
+            <p className="text-[#DE6B48] font-semibold">{PHONE_NUMBER}</p>
           </a>
 
           <a
@@ -995,26 +997,39 @@ const ContactSection = () => {
             target="_blank"
             rel="noopener noreferrer"
             data-testid="contact-whatsapp"
-            className={`group bg-[#F7F7F2] rounded-2xl p-8 text-center hover:bg-[#25D366] transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl ${isInView ? 'animate-fade-up' : 'opacity-0'}`}
+            className={`group bg-[#F7F7F2] rounded-2xl p-6 text-center hover:bg-[#25D366] transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl ${isInView ? 'animate-fade-up' : 'opacity-0'}`}
             style={{ animationDelay: '100ms' }}
           >
-            <div className="w-20 h-20 bg-[#25D366] group-hover:bg-white rounded-2xl flex items-center justify-center mx-auto mb-6 transition-colors duration-500">
-              <MessageCircle className="w-8 h-8 text-white group-hover:text-[#25D366] transition-colors" />
+            <div className="w-16 h-16 bg-[#25D366] group-hover:bg-white rounded-2xl flex items-center justify-center mx-auto mb-4 transition-colors duration-500">
+              <MessageCircle className="w-7 h-7 text-white group-hover:text-[#25D366] transition-colors" />
             </div>
-            <h3 className="text-xl font-bold text-[#1C1C18] group-hover:text-white mb-2 transition-colors">WhatsApp</h3>
-            <p className="text-[#25D366] group-hover:text-white font-semibold text-lg transition-colors">Mesaj Gönderin</p>
+            <h3 className="text-lg font-bold text-[#1C1C18] group-hover:text-white mb-2 transition-colors">WhatsApp</h3>
+            <p className="text-[#25D366] group-hover:text-white font-semibold transition-colors">Mesaj Gönderin</p>
+          </a>
+
+          <a
+            href={`mailto:${EMAIL}`}
+            data-testid="contact-email"
+            className={`group bg-[#F7F7F2] rounded-2xl p-6 text-center hover:bg-[#2B4433] transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl ${isInView ? 'animate-fade-up' : 'opacity-0'}`}
+            style={{ animationDelay: '200ms' }}
+          >
+            <div className="w-16 h-16 bg-[#2B4433] group-hover:bg-white rounded-2xl flex items-center justify-center mx-auto mb-4 transition-colors duration-500">
+              <Mail className="w-7 h-7 text-white group-hover:text-[#2B4433] transition-colors" />
+            </div>
+            <h3 className="text-lg font-bold text-[#1C1C18] group-hover:text-white mb-2 transition-colors">E-posta</h3>
+            <p className="text-[#DE6B48] font-semibold text-sm">{EMAIL}</p>
           </a>
 
           <div
             data-testid="contact-location"
-            className={`group bg-[#F7F7F2] rounded-2xl p-8 text-center hover:bg-[#DE6B48] transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl ${isInView ? 'animate-fade-up' : 'opacity-0'}`}
-            style={{ animationDelay: '200ms' }}
+            className={`group bg-[#F7F7F2] rounded-2xl p-6 text-center hover:bg-[#DE6B48] transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl ${isInView ? 'animate-fade-up' : 'opacity-0'}`}
+            style={{ animationDelay: '300ms' }}
           >
-            <div className="w-20 h-20 bg-[#DE6B48] group-hover:bg-white rounded-2xl flex items-center justify-center mx-auto mb-6 transition-colors duration-500">
-              <MapPin className="w-8 h-8 text-white group-hover:text-[#DE6B48] transition-colors" />
+            <div className="w-16 h-16 bg-[#DE6B48] group-hover:bg-white rounded-2xl flex items-center justify-center mx-auto mb-4 transition-colors duration-500">
+              <MapPin className="w-7 h-7 text-white group-hover:text-[#DE6B48] transition-colors" />
             </div>
-            <h3 className="text-xl font-bold text-[#1C1C18] group-hover:text-white mb-2 transition-colors">Hizmet Bölgesi</h3>
-            <p className="text-[#63635E] group-hover:text-white/90 transition-colors">Türkiye Geneli</p>
+            <h3 className="text-lg font-bold text-[#1C1C18] group-hover:text-white mb-2 transition-colors">Hizmet Bölgesi</h3>
+            <p className="text-[#63635E] group-hover:text-white/90 transition-colors text-sm">İstanbul & Tekirdağ<br/>Tüm İlçeler</p>
           </div>
         </div>
       </div>
@@ -1056,6 +1071,12 @@ const Footer = () => {
                 className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-[#DE6B48] transition-colors"
               >
                 <Phone className="w-5 h-5 text-white" />
+              </a>
+              <a 
+                href={`mailto:${EMAIL}`}
+                className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-[#2B4433] transition-colors"
+              >
+                <Mail className="w-5 h-5 text-white" />
               </a>
             </div>
           </div>
