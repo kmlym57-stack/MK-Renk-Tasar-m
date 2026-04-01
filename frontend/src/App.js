@@ -63,7 +63,7 @@ const services = [
   {
     id: 3,
     title: "Tamirat",
-    description: "Çatlak onarımı, alçı tamiri, su kaçağı sonrası tamirat ve daha fazlası. Hızlı ve kalıcı çözümler sunuyoruz.",
+    description: "Çatlak onarımı, alçı tamiri ve daha fazlası. Hızlı ve kalıcı çözümler sunuyoruz.",
     icon: Wrench,
     features: ["Çatlak onarımı", "Alçı tamiri", "Rutubet giderme"],
   },
