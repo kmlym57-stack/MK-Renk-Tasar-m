@@ -59,11 +59,29 @@ class QuoteRequest(BaseModel):
     status: str = "pending"
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
+# Review Model
+class ReviewCreate(BaseModel):
+    name: str
+    rating: int = Field(ge=1, le=5)
+    comment: str
+    service_type: Optional[str] = None
+
+class Review(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    name: str
+    rating: int
+    comment: str
+    service_type: Optional[str] = None
+    is_approved: bool = False
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
 
 # Routes
 @api_router.get("/")
 async def root():
-    return {"message": "Dekorix API - Boya, Badana, Tamirat Hizmetleri"}
+    return {"message": "MK Renk & Tasarım API - Boya, Badana, Tamirat Hizmetleri"}
 
 @api_router.post("/status", response_model=StatusCheck)
 async def create_status_check(input: StatusCheckCreate):
@@ -118,6 +136,69 @@ async def get_quote_request(quote_id: str):
         quote['created_at'] = datetime.fromisoformat(quote['created_at'])
     
     return quote
+
+# Review Routes
+@api_router.post("/reviews", response_model=Review)
+async def create_review(input: ReviewCreate):
+    review_dict = input.model_dump()
+    review_obj = Review(**review_dict)
+    
+    doc = review_obj.model_dump()
+    doc['created_at'] = doc['created_at'].isoformat()
+    
+    await db.reviews.insert_one(doc)
+    return review_obj
+
+@api_router.get("/reviews", response_model=List[Review])
+async def get_reviews(approved_only: bool = True):
+    query = {"is_approved": True} if approved_only else {}
+    reviews = await db.reviews.find(query, {"_id": 0}).sort("created_at", -1).to_list(100)
+    
+    for review in reviews:
+        if isinstance(review.get('created_at'), str):
+            review['created_at'] = datetime.fromisoformat(review['created_at'])
+    
+    return reviews
+
+@api_router.get("/reviews/all", response_model=List[Review])
+async def get_all_reviews():
+    reviews = await db.reviews.find({}, {"_id": 0}).sort("created_at", -1).to_list(100)
+    
+    for review in reviews:
+        if isinstance(review.get('created_at'), str):
+            review['created_at'] = datetime.fromisoformat(review['created_at'])
+    
+    return reviews
+
+@api_router.patch("/reviews/{review_id}/approve")
+async def approve_review(review_id: str):
+    result = await db.reviews.update_one(
+        {"id": review_id},
+        {"$set": {"is_approved": True}}
+    )
+    if result.matched_count == 0:
+        raise HTTPException(status_code=404, detail="Review not found")
+    return {"message": "Review approved successfully"}
+
+@api_router.delete("/reviews/{review_id}")
+async def delete_review(review_id: str):
+    result = await db.reviews.delete_one({"id": review_id})
+    if result.deleted_count == 0:
+        raise HTTPException(status_code=404, detail="Review not found")
+    return {"message": "Review deleted successfully"}
+
+# Price Calculator
+@api_router.get("/prices")
+async def get_prices():
+    return {
+        "services": {
+            "ic-mekan-boya": {"name": "İç Mekan Boya", "price_per_sqm": 85, "unit": "₺/m²"},
+            "badana": {"name": "Badana", "price_per_sqm": 45, "unit": "₺/m²"},
+            "tadilat": {"name": "Tadilat", "price_per_sqm": 150, "unit": "₺/m²"},
+            "tamirat": {"name": "Tamirat", "price_per_sqm": 120, "unit": "₺/m²"},
+        },
+        "note": "Fiyatlar tahmini olup, kesin fiyat için yerinde keşif gerekmektedir."
+    }
 
 
 # Include the router in the main app

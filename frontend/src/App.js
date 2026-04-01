@@ -32,6 +32,8 @@ import {
   Shield,
   Award,
   Mail,
+  Calculator,
+  Send,
 } from "lucide-react";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
@@ -209,6 +211,7 @@ const Header = () => {
 
   const navLinks = [
     { href: "#hizmetler", label: "Hizmetler" },
+    { href: "#fiyat-hesapla", label: "Fiyat Hesapla" },
     { href: "#galeri", label: "Galeri" },
     { href: "#hakkimizda", label: "Hakkımızda" },
     { href: "#yorumlar", label: "Yorumlar" },
@@ -668,14 +671,200 @@ const AboutSection = () => {
   );
 };
 
-// Testimonials Section
-const TestimonialsSection = () => {
+// Price Calculator Section
+const PriceCalculatorSection = () => {
   const [ref, isInView] = useInView();
+  const [selectedService, setSelectedService] = useState("");
+  const [squareMeters, setSquareMeters] = useState("");
+  const [calculatedPrice, setCalculatedPrice] = useState(null);
+
+  const prices = {
+    "ic-mekan-boya": { name: "İç Mekan Boya", price: 85 },
+    "badana": { name: "Badana", price: 45 },
+    "tadilat": { name: "Tadilat", price: 150 },
+    "tamirat": { name: "Tamirat", price: 120 },
+  };
+
+  const calculatePrice = () => {
+    if (!selectedService || !squareMeters || squareMeters <= 0) {
+      toast.error("Lütfen hizmet türü ve metrekare giriniz");
+      return;
+    }
+    const price = prices[selectedService].price * parseFloat(squareMeters);
+    setCalculatedPrice(price);
+  };
+
+  return (
+    <section
+      id="fiyat-hesapla"
+      data-testid="calculator-section"
+      className="section-spacing bg-white"
+      ref={ref}
+    >
+      <div className="container-custom">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className={`${isInView ? 'animate-fade-right' : 'opacity-0'}`}>
+            <span className="inline-block bg-[#DE6B48]/10 text-[#DE6B48] text-sm font-semibold px-4 py-2 rounded-full mb-6">
+              FİYAT HESAPLA
+            </span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl text-[#1C1C18] mb-6 leading-tight">
+              Tahmini Fiyat
+              <span className="block text-[#DE6B48]">Hesaplayıcı</span>
+            </h2>
+            <p className="text-[#63635E] leading-relaxed mb-8 text-lg">
+              Hizmet türünü seçin ve metrekare girin, size anında tahmini fiyat sunalım. 
+              Kesin fiyat için yerinde keşif gerekmektedir.
+            </p>
+            
+            <div className="bg-[#F7F7F2] rounded-2xl p-6 space-y-4">
+              <div className="grid grid-cols-2 gap-4">
+                {Object.entries(prices).map(([key, value]) => (
+                  <div key={key} className="flex justify-between items-center bg-white rounded-xl p-3">
+                    <span className="text-sm text-[#1C1C18] font-medium">{value.name}</span>
+                    <span className="text-[#DE6B48] font-bold">{value.price}₺/m²</span>
+                  </div>
+                ))}
+              </div>
+              <p className="text-xs text-[#63635E] text-center mt-4">
+                * Fiyatlar ortalama değerlerdir. İşin detayına göre değişiklik gösterebilir.
+              </p>
+            </div>
+          </div>
+
+          <div className={`${isInView ? 'animate-fade-left' : 'opacity-0'}`}>
+            <div className="bg-[#2B4433] rounded-3xl p-8 md:p-10">
+              <div className="flex items-center gap-3 mb-8">
+                <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center">
+                  <Calculator className="w-7 h-7 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-white">Hızlı Hesapla</h3>
+              </div>
+
+              <div className="space-y-5">
+                <div className="space-y-2">
+                  <Label className="text-white/80">Hizmet Türü</Label>
+                  <Select value={selectedService} onValueChange={setSelectedService}>
+                    <SelectTrigger 
+                      data-testid="calc-service-select"
+                      className="bg-white/10 border-white/20 text-white h-12 rounded-xl"
+                    >
+                      <SelectValue placeholder="Hizmet seçin" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="ic-mekan-boya">İç Mekan Boya</SelectItem>
+                      <SelectItem value="badana">Badana</SelectItem>
+                      <SelectItem value="tadilat">Tadilat</SelectItem>
+                      <SelectItem value="tamirat">Tamirat</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="space-y-2">
+                  <Label className="text-white/80">Metrekare (m²)</Label>
+                  <Input
+                    type="number"
+                    data-testid="calc-sqm-input"
+                    value={squareMeters}
+                    onChange={(e) => setSquareMeters(e.target.value)}
+                    placeholder="Örn: 50"
+                    className="bg-white/10 border-white/20 text-white placeholder:text-white/50 h-12 rounded-xl"
+                  />
+                </div>
+
+                <Button
+                  onClick={calculatePrice}
+                  data-testid="calc-button"
+                  className="w-full bg-[#DE6B48] hover:bg-[#c55a3a] text-white rounded-xl py-6 text-base font-semibold"
+                >
+                  Fiyat Hesapla
+                  <Calculator className="ml-2 w-5 h-5" />
+                </Button>
+
+                {calculatedPrice !== null && (
+                  <div className="bg-white rounded-2xl p-6 text-center animate-fade-up">
+                    <p className="text-sm text-[#63635E] mb-2">Tahmini Fiyat</p>
+                    <p className="text-4xl font-bold text-[#2B4433]">
+                      {calculatedPrice.toLocaleString('tr-TR')} ₺
+                    </p>
+                    <p className="text-xs text-[#63635E] mt-2">
+                      {prices[selectedService]?.name} - {squareMeters} m²
+                    </p>
+                    <Button
+                      asChild
+                      className="mt-4 bg-[#2B4433] hover:bg-[#1f3326] text-white rounded-full"
+                    >
+                      <a href="#teklif">Kesin Teklif Al</a>
+                    </Button>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Reviews Section with Add Review Form
+const ReviewsSection = () => {
+  const [ref, isInView] = useInView();
+  const [reviews, setReviews] = useState([]);
+  const [showForm, setShowForm] = useState(false);
+  const [newReview, setNewReview] = useState({
+    name: "",
+    rating: 5,
+    comment: "",
+    service_type: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    fetchReviews();
+  }, []);
+
+  const fetchReviews = async () => {
+    try {
+      const response = await axios.get(`${API}/reviews`);
+      // Combine static testimonials with dynamic reviews
+      const dynamicReviews = response.data.map(r => ({
+        name: r.name,
+        role: r.service_type || "Müşteri",
+        text: r.comment,
+        rating: r.rating,
+      }));
+      setReviews([...testimonials, ...dynamicReviews]);
+    } catch (error) {
+      // If API fails, just show static testimonials
+      setReviews(testimonials);
+    }
+  };
+
+  const handleSubmitReview = async (e) => {
+    e.preventDefault();
+    
+    if (!newReview.name || !newReview.comment) {
+      toast.error("Lütfen adınızı ve yorumunuzu yazın");
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      await axios.post(`${API}/reviews`, newReview);
+      toast.success("Yorumunuz gönderildi! Onaylandıktan sonra yayınlanacaktır.");
+      setNewReview({ name: "", rating: 5, comment: "", service_type: "" });
+      setShowForm(false);
+    } catch (error) {
+      toast.error("Bir hata oluştu. Lütfen tekrar deneyin.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <section
       id="yorumlar"
-      data-testid="testimonials-section"
+      data-testid="reviews-section"
       className="section-spacing bg-[#F7F7F2]"
       ref={ref}
     >
@@ -687,34 +876,136 @@ const TestimonialsSection = () => {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl text-[#1C1C18] mb-4">
             Müşterilerimiz Ne Diyor?
           </h2>
+          <p className="text-[#63635E] max-w-2xl mx-auto">
+            Sizin de deneyimlerinizi paylaşmanızı isteriz
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {testimonials.map((testimonial, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          {reviews.slice(0, 6).map((review, index) => (
             <div
               key={index}
               className={`bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 ${isInView ? 'animate-fade-up' : 'opacity-0'}`}
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <div className="flex gap-1 mb-4">
-                {[...Array(testimonial.rating)].map((_, i) => (
+                {[...Array(review.rating)].map((_, i) => (
                   <Star key={i} className="w-5 h-5 text-yellow-400 fill-yellow-400" />
                 ))}
               </div>
               <p className="text-[#63635E] leading-relaxed mb-6 italic">
-                "{testimonial.text}"
+                "{review.text}"
               </p>
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 bg-[#2B4433] rounded-full flex items-center justify-center text-white font-bold">
-                  {testimonial.name.charAt(0)}
+                  {review.name.charAt(0)}
                 </div>
                 <div>
-                  <div className="font-semibold text-[#1C1C18]">{testimonial.name}</div>
-                  <div className="text-sm text-[#63635E]">{testimonial.role}</div>
+                  <div className="font-semibold text-[#1C1C18]">{review.name}</div>
+                  <div className="text-sm text-[#63635E]">{review.role}</div>
                 </div>
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Add Review Button & Form */}
+        <div className="text-center">
+          {!showForm ? (
+            <Button
+              onClick={() => setShowForm(true)}
+              data-testid="add-review-btn"
+              className="bg-[#2B4433] hover:bg-[#1f3326] text-white rounded-full px-8 py-6"
+            >
+              <Star className="mr-2 w-5 h-5" />
+              Siz de Değerlendirin
+            </Button>
+          ) : (
+            <div className={`max-w-xl mx-auto bg-white rounded-2xl p-8 shadow-xl ${isInView ? 'animate-fade-up' : ''}`}>
+              <div className="flex justify-between items-center mb-6">
+                <h3 className="text-xl font-bold text-[#1C1C18]">Yorum Yazın</h3>
+                <button 
+                  onClick={() => setShowForm(false)}
+                  className="text-[#63635E] hover:text-[#1C1C18]"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              <form onSubmit={handleSubmitReview} className="space-y-4">
+                <div className="space-y-2">
+                  <Label className="text-[#1C1C18]">Adınız *</Label>
+                  <Input
+                    data-testid="review-name-input"
+                    value={newReview.name}
+                    onChange={(e) => setNewReview({...newReview, name: e.target.value})}
+                    placeholder="Adınız Soyadınız"
+                    className="bg-[#F7F7F2] border-[#D5D5C8] h-12 rounded-xl"
+                    required
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label className="text-[#1C1C18]">Puanınız</Label>
+                  <div className="flex gap-2">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <button
+                        key={star}
+                        type="button"
+                        onClick={() => setNewReview({...newReview, rating: star})}
+                        className="focus:outline-none transition-transform hover:scale-110"
+                      >
+                        <Star 
+                          className={`w-8 h-8 ${star <= newReview.rating ? 'text-yellow-400 fill-yellow-400' : 'text-gray-300'}`}
+                        />
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <Label className="text-[#1C1C18]">Aldığınız Hizmet</Label>
+                  <Select 
+                    value={newReview.service_type} 
+                    onValueChange={(value) => setNewReview({...newReview, service_type: value})}
+                  >
+                    <SelectTrigger className="bg-[#F7F7F2] border-[#D5D5C8] h-12 rounded-xl">
+                      <SelectValue placeholder="Hizmet seçin (isteğe bağlı)" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="İç Mekan Boya">İç Mekan Boya</SelectItem>
+                      <SelectItem value="Badana">Badana</SelectItem>
+                      <SelectItem value="Tadilat">Tadilat</SelectItem>
+                      <SelectItem value="Tamirat">Tamirat</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="space-y-2">
+                  <Label className="text-[#1C1C18]">Yorumunuz *</Label>
+                  <Textarea
+                    data-testid="review-comment-input"
+                    value={newReview.comment}
+                    onChange={(e) => setNewReview({...newReview, comment: e.target.value})}
+                    placeholder="Deneyiminizi paylaşın..."
+                    rows={4}
+                    className="bg-[#F7F7F2] border-[#D5D5C8] rounded-xl resize-none"
+                    required
+                  />
+                </div>
+
+                <Button
+                  type="submit"
+                  data-testid="submit-review-btn"
+                  disabled={isSubmitting}
+                  className="w-full bg-[#DE6B48] hover:bg-[#c55a3a] text-white rounded-xl py-6"
+                >
+                  {isSubmitting ? "Gönderiliyor..." : "Yorumu Gönder"}
+                  <Send className="ml-2 w-5 h-5" />
+                </Button>
+              </form>
+            </div>
+          )}
         </div>
       </div>
     </section>
@@ -1164,9 +1455,10 @@ const HomePage = () => {
         <HeroSection />
         <StatsSection />
         <ServicesSection />
+        <PriceCalculatorSection />
         <GallerySection />
         <AboutSection />
-        <TestimonialsSection />
+        <ReviewsSection />
         <QuoteFormSection />
         <ContactSection />
       </main>
