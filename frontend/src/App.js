@@ -41,7 +41,7 @@ const API = `${BACKEND_URL}/api`;
 
 const PHONE_NUMBER = "05325782937";
 const WHATSAPP_MESSAGE = encodeURIComponent("Merhaba, hizmetleriniz konusunda bilgi alabilir miyim?");
-const WHATSAPP_LINK = `https://wa.me/90${PHONE_NUMBER.replace(/^0/, "")}?text=${WHATSAPP_MESSAGE}`;
+const WHATSAPP_LINK = `https://web.whatsapp.com/send?phone=90${PHONE_NUMBER.replace(/^0/, "")}&text=${WHATSAPP_MESSAGE}`;
 const BUSINESS_NAME = "MK Renk & Tasarım";
 const EMAIL = "mlymmyasar@gmail.com";
 
