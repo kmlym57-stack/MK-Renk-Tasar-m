@@ -630,7 +630,7 @@ const AboutSection = () => {
               className="bg-[#DE6B48] hover:bg-[#c55a3a] text-white rounded-full px-8 py-6 shadow-lg shadow-[#DE6B48]/30"
             >
               <a href="#teklif">
-                Bizimle Çalışın
+                Teklif Al
                 <ArrowRight className="ml-2 w-5 h-5" />
               </a>
             </Button>
