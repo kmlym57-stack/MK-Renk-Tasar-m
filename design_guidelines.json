@@ -1,0 +1,100 @@
+{
+  "theme": "light",
+  "archetype": "Archetype 1 (Organic & Earthy)",
+  "business_context": {
+    "name": "Dekorix",
+    "phone": "05455653257",
+    "services": [
+      "İç Mekan Boya",
+      "Badana",
+      "Tadilat",
+      "Tamirat",
+      "Alçı ve Dekorasyon"
+    ],
+    "target_audience": "Homeowners and businesses looking for premium, reliable, and clean renovation and painting services."
+  },
+  "typography": {
+    "headings": {
+      "fontFamily": "'Cabinet Grotesk', sans-serif",
+      "weight": "800",
+      "tracking": "tracking-tighter",
+      "lineHeight": "leading-none",
+      "notes": "Use for H1 to H4. H1 should not exceed text-6xl."
+    },
+    "body": {
+      "fontFamily": "'Satoshi', sans-serif",
+      "weight": "400",
+      "lineHeight": "leading-relaxed"
+    },
+    "accents": {
+      "fontFamily": "'Satoshi', sans-serif",
+      "textTransform": "uppercase",
+      "letterSpacing": "tracking-[0.2em]",
+      "size": "text-xs font-bold"
+    }
+  },
+  "colors": {
+    "background": "#F7F7F2",
+    "foreground": "#1C1C18",
+    "primary": "#2B4433",
+    "primary_foreground": "#FFFFFF",
+    "secondary": "#DE6B48",
+    "secondary_foreground": "#FFFFFF",
+    "muted": "#EAEADF",
+    "muted_foreground": "#63635E",
+    "border": "#D5D5C8",
+    "whatsapp": "#25D366",
+    "notes": "Background is Warm Sand. Primary is Deep Forest Green for trust/architectural feel. Secondary is Terracotta for warm, action-oriented CTAs."
+  },
+  "spacing_and_layout": {
+    "strategy": "Generous Spacing Philosophy. Use generous padding (p-8 to p-12) for inner sections.",
+    "bento_grid": "MODE A: Tetris Grid for services. Use grid-cols-1 md:grid-cols-12 with varied spans (e.g., col-span-8, col-span-4) and wide gaps (gap-8).",
+    "section_padding": "py-24 md:py-32",
+    "container": "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+  },
+  "surfaces": {
+    "hero_overlay": "bg-black/40 to ensure text readability over the background image without killing the image entirely.",
+    "header": "Crystal Glass strategy. bg-[#F7F7F2]/80 backdrop-blur-xl border-b border-[#D5D5C8]/50 shadow-sm.",
+    "cards": "Clay & Crisp. Background matches parent or slightly lighter. 1px solid border-[#D5D5C8], no heavy shadows by default, subtle lift and shadow-lg on hover."
+  },
+  "media": [
+    {
+      "category": "hero_background",
+      "url": "https://images.pexels.com/photos/15798784/pexels-photo-15798784.jpeg",
+      "description": "Room under renovation with tools. Great for hero background showing real work. Add black/40 overlay."
+    },
+    {
+      "category": "service_painting",
+      "url": "https://images.pexels.com/photos/5493669/pexels-photo-5493669.jpeg",
+      "description": "Construction worker painting wall white."
+    },
+    {
+      "category": "service_renovation",
+      "url": "https://images.pexels.com/photos/6474339/pexels-photo-6474339.jpeg",
+      "description": "Painter in protective suit preparing for indoor home renovation."
+    },
+    {
+      "category": "gallery_after_1",
+      "url": "https://images.pexels.com/photos/7587872/pexels-photo-7587872.jpeg",
+      "description": "Spacious finished room featuring blue walls. Perfect for 'After' showcase."
+    },
+    {
+      "category": "gallery_after_2",
+      "url": "https://images.unsplash.com/photo-1749704647804-81338ade5546?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1OTN8MHwxfHNlYXJjaHwzfHxob21lJTIwcmVub3ZhdGlvbiUyMGxpdmluZyUyMHJvb218ZW58MHx8fHwxNzc1MDcxMzA5fDA&ixlib=rb-4.1.0&q=85",
+      "description": "Modern kitchen living area with natural light. Perfect for 'After' showcase."
+    }
+  ],
+  "components_strategy": {
+    "forms": "Use Shadcn UI (Input, Textarea, Button). Customize borders to match theme, use Terracotta for submit button. Input backgrounds should be white or #EAEADF.",
+    "floating_whatsapp": "Fixed bottom-right corner with high z-index (z-50). Use standard WhatsApp green (#25D366) with a subtle pulse animation for visibility.",
+    "navigation": "Visible on desktop. Logo left, Nav links center, Teklif Al (Quote) CTA right.",
+    "gallery": "Bento-style or 2-column grid showing before/after results or high-end finished spaces."
+  },
+  "animation_and_interaction": {
+    "hover_states": "Interactive elements must lift (-translate-y-1) and cast shadow-md. Always set explicit hover text colors.",
+    "scroll": "Lenis smooth scrolling is highly recommended.",
+    "entrance": "Use framer-motion for staggered fade-up of bento grid items on scroll."
+  },
+  "icons": "lucide-react",
+  "testing_attributes": "All interactive elements (WhatsApp button, form submit, nav links) MUST include data-testid (e.g., data-testid='whatsapp-contact-btn')."
+}
