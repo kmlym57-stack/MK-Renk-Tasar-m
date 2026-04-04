@@ -1,19 +1,19 @@
 import { useState, useEffect, useRef } from "react";
-import "@/App.css";
+import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from "axios";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
+import { Button } from "./components/ui/button";
+import { Input } from "./components/ui/input";
+import { Textarea } from "./components/ui/textarea";
+import { Label } from "./components/ui/label";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { Toaster } from "@/components/ui/sonner";
+} from "./components/ui/select";
+import { Toaster } from "./components/ui/sonner";
 import { toast } from "sonner";
 import {
   Phone,
