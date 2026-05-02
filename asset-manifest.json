@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/static/css/main.650008c6.css",
-    "main.js": "/static/js/main.18d41065.js",
-    "index.html": "/index.html",
-    "main.650008c6.css.map": "/static/css/main.650008c6.css.map",
-    "main.18d41065.js.map": "/static/js/main.18d41065.js.map"
+    "main.css": "/MK-Renk-Ve-Tasarim/static/css/main.650008c6.css",
+    "main.js": "/MK-Renk-Ve-Tasarim/static/js/main.18d41065.js",
+    "index.html": "/MK-Renk-Ve-Tasarim/index.html",
+    "main.650008c6.css.map": "/MK-Renk-Ve-Tasarim/static/css/main.650008c6.css.map",
+    "main.18d41065.js.map": "/MK-Renk-Ve-Tasarim/static/js/main.18d41065.js.map"
   },
   "entrypoints": [
     "static/css/main.650008c6.css",
