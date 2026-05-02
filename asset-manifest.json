@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/MK-Renk-Tasar-m/static/css/main.eb6adba1.css",
+    "main.css": "/MK-Renk-Tasar-m/static/css/main.650008c6.css",
     "main.js": "/MK-Renk-Tasar-m/static/js/main.371ee04a.js",
     "index.html": "/MK-Renk-Tasar-m/index.html",
-    "main.eb6adba1.css.map": "/MK-Renk-Tasar-m/static/css/main.eb6adba1.css.map",
+    "main.650008c6.css.map": "/MK-Renk-Tasar-m/static/css/main.650008c6.css.map",
     "main.371ee04a.js.map": "/MK-Renk-Tasar-m/static/js/main.371ee04a.js.map"
   },
   "entrypoints": [
-    "static/css/main.eb6adba1.css",
+    "static/css/main.650008c6.css",
     "static/js/main.371ee04a.js"
   ]
 }
