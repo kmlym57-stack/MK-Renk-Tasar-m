@@ -1464,7 +1464,7 @@ const HomePage = () => {
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
+      <BrowserRouter basename="/MK-Renk-Ve-Tasarim">
         <Routes>
           <Route path="/" element={<HomePage />} />
         </Routes>
