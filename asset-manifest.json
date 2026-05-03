@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/MK-Renk-Ve-Tasarim/static/css/main.ece00058.css",
-    "main.js": "/MK-Renk-Ve-Tasarim/static/js/main.1415fffd.js",
+    "main.js": "/MK-Renk-Ve-Tasarim/static/js/main.beb962c2.js",
     "index.html": "/MK-Renk-Ve-Tasarim/index.html",
     "main.ece00058.css.map": "/MK-Renk-Ve-Tasarim/static/css/main.ece00058.css.map",
-    "main.1415fffd.js.map": "/MK-Renk-Ve-Tasarim/static/js/main.1415fffd.js.map"
+    "main.beb962c2.js.map": "/MK-Renk-Ve-Tasarim/static/js/main.beb962c2.js.map"
   },
   "entrypoints": [
     "static/css/main.ece00058.css",
-    "static/js/main.1415fffd.js"
+    "static/js/main.beb962c2.js"
   ]
 }
