@@ -166,11 +166,12 @@ const useInView = (options = {}) => {
 const AnimatedCounter = ({ end, duration = 2000 }) => {
   const [count, setCount] = useState(0);
   const [ref, isInView] = useInView();
+  const numericEnd = parseInt(end.replace(/\D/g, ''), 10);
+  const suffix = end.replace(/\d/g, '');
 
   useEffect(() => {
-    if (!isInView) return;
+    if (!isInView || !numericEnd) return;
     
-    const numericEnd = parseInt(end.replace(/\D/g, ''));
     const startTime = Date.now();
     
     const animate = () => {
@@ -185,9 +186,9 @@ const AnimatedCounter = ({ end, duration = 2000 }) => {
     };
     
     animate();
-  }, [isInView, end, duration]);
+  }, [isInView, numericEnd, duration]);
 
-  return <span ref={ref}>{count}{end.includes('+') ? '+' : ''}{end.includes('%') ? '%' : ''}</span>;
+  return <span ref={ref}>{isInView ? `${count}${suffix}` : `${numericEnd}${suffix}`}</span>;
 };
 
 // Header Component
